@@ -1,0 +1,53 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1577221084712-45b0445d2b00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=343&q=80",
+      "name": "Jairo jr",
+      "birth": 764726400000,
+      "email": "jairo_juniorjj@hotmail.com",
+      "blood": "AB0",
+      "weigth": "73",
+      "heigth": "173"
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+      "name": "Miriane",
+      "birth": 764726400000,
+      "email": "miriane@miriane.com",
+      "blood": "AB0",
+      "weigth": "73",
+      "heigth": "173"
+    }
+  ],
+  "instructors": [
+    {
+      "id": 3,
+      "avatar_url": "https://images.unsplash.com/photo-1577221084712-45b0445d2b00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=343&q=80",
+      "name": "Jairo Jr",
+      "birth": 764726400000,
+      "gender": "M",
+      "services": "Jairo",
+      "created_at": 1583523532650
+    },
+    {
+      "id": 4,
+      "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+      "name": "MirianeFerreira",
+      "birth": 701136000000,
+      "gender": "M",
+      "services": "Inc",
+      "created_at": 1583523590968
+    },
+    {
+      "id": 5,
+      "avatar_url": "https://images.unsplash.com/photo-1543975200-8e313fb04fc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+      "name": "Thiago",
+      "birth": 643420800000,
+      "gender": "F",
+      "services": "TI",
+      "created_at": 1583523733696
+    }
+  ]
+}
