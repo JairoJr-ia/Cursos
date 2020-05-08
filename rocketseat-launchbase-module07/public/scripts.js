@@ -49,6 +49,7 @@ const Mask = {
 
         return value
     }
+
 }
 
 const PhotosUpload = {
