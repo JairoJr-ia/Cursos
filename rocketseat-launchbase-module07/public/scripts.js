@@ -1,47 +1,47 @@
 const Mask = {
-    apply(input, func){
-        setTimeout(function(){
+    apply(input, func) {
+        setTimeout(function () {
             input.value = Mask[func](input.value)
         }, 1)
     },
-    formatBRL(value){
+    formatBRL(value) {
 
-        value = value.replace(/\D/g,'')
+        value = value.replace(/\D/g, '')
 
         return new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL'
-        }).format(value/100)
-    
-    },
-    cpfCnpj(value){
-        value = value.replace(/\D/g,'')
+        }).format(value / 100)
 
-        if (value.length > 14){
+    },
+    cpfCnpj(value) {
+        value = value.replace(/\D/g, '')
+
+        if (value.length > 14) {
             value = value.slice(0, -1)
         }
 
         //check if cnpj
-        if(value.length > 11){
+        if (value.length > 11) {
             value = value.replace(/(\d{2})(\d)/, '$1.$2')
             value = value.replace(/(\d{3})(\d)/, '$1.$2')
             value = value.replace(/(\d{3})(\d)/, '$1/$2')
             value = value.replace(/(\d{4})(\d)/, '$1-$2')
-            
+
         } else {
             value = value.replace(/(\d{3})(\d)/, '$1.$2')
             value = value.replace(/(\d{3})(\d)/, '$1.$2')
             value = value.replace(/(\d{3})(\d)/, '$1-$2')
-            
+
         }
 
         return value
 
     },
-    cep(value){
-        value = value.replace(/\D/g,'')
+    cep(value) {
+        value = value.replace(/\D/g, '')
 
-        if (value.length > 8){
+        if (value.length > 8) {
             value = value.slice(0, -1)
         }
 
@@ -57,7 +57,7 @@ const PhotosUpload = {
     preview: document.querySelector('#photos-preview'),
     uploadLimit: 6,
     files: [],
-    handleFileInput(event){
+    handleFileInput(event) {
 
         const { files: fileList } = event.target
         PhotosUpload.input = event.target
@@ -65,7 +65,7 @@ const PhotosUpload = {
         if (PhotosUpload.hasLimit(event)) return
 
         Array.from(fileList).forEach(file => {
-            
+
             PhotosUpload.files.push(file)
 
             const reader = new FileReader()
@@ -85,13 +85,13 @@ const PhotosUpload = {
         })
 
         PhotosUpload.input.files = PhotosUpload.getAllFiles()
-  
-    } ,
-    hasLimit(event){
-        const { uploadLimit, input, preview } = PhotosUpload
-        const { files : fileList } = input
 
-        if (fileList.length > uploadLimit){
+    },
+    hasLimit(event) {
+        const { uploadLimit, input, preview } = PhotosUpload
+        const { files: fileList } = input
+
+        if (fileList.length > uploadLimit) {
             alert(`Envie no máximo ${uploadLimit} fotos`)
             event.preventDefault()
             return true
@@ -99,14 +99,14 @@ const PhotosUpload = {
 
         const photosDiv = []
         preview.childNodes.forEach(item => {
-            if(item.classList && item.classList.value == "photo"){
+            if (item.classList && item.classList.value == "photo") {
                 photosDiv.push(item)
             }
         })
 
         const totalPhotos = fileList.length + photosDiv.length
 
-        if ( totalPhotos > uploadLimit ) {
+        if (totalPhotos > uploadLimit) {
             alert(`Você atingiu o limite máximo de ${uploadLimit} fotos`)
             event.preventDefault()
             return true
@@ -114,7 +114,7 @@ const PhotosUpload = {
 
         return false
     },
-    getAllFiles(){
+    getAllFiles() {
         const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
 
         PhotosUpload.files.forEach(file => dataTransfer.items.add(file))
@@ -122,11 +122,11 @@ const PhotosUpload = {
         return dataTransfer.files
 
     },
-    getContainer(image){
+    getContainer(image) {
         const div = document.createElement('div')
 
         div.classList.add('photo')
-        
+
         div.onclick = PhotosUpload.removePhoto
 
         div.appendChild(image)
@@ -136,7 +136,7 @@ const PhotosUpload = {
         return div
 
     },
-    getRemoveButton(){
+    getRemoveButton() {
         const button = document.createElement('i')
 
         button.classList.add('material-icons')
@@ -144,7 +144,7 @@ const PhotosUpload = {
         return button
 
     },
-    removePhoto(event){
+    removePhoto(event) {
         const photoDiv = event.target.parentNode
         const photosArray = Array.from(PhotosUpload.preview.children)
         const index = photosArray.indexOf(photoDiv)
@@ -155,7 +155,7 @@ const PhotosUpload = {
         photoDiv.remove()
 
     },
-    removeOldPhoto(event){
+    removeOldPhoto(event) {
         const photoDiv = event.target.parentNode
 
         if (photoDiv.id) {
@@ -167,7 +167,7 @@ const PhotosUpload = {
 
         photoDiv.remove()
     }
-    
+
 }
 
 const ImageGallery = {
@@ -177,9 +177,9 @@ const ImageGallery = {
         const { target } = e
 
         ImageGallery.previews.forEach(preview => preview.classList.remove('active'))
-        
+
         target.classList.add('active')
-    
+
         ImageGallery.highlight.src = target.src
         Lightbox.image.src = target.src
 
@@ -194,42 +194,39 @@ const Lightbox = {
         Lightbox.target.style.opacity = 1
         Lightbox.target.style.top = 0
         Lightbox.target.style.bottom = 0
-        Lightbox.closeButton.style.top = 0  
+        Lightbox.closeButton.style.top = 0
 
     },
     close() {
         Lightbox.target.style.opacity = 0
         Lightbox.target.style.top = "-100%"
         Lightbox.target.style.bottom = "initial"
-        Lightbox.closeButton.style.top = "-80px" 
+        Lightbox.closeButton.style.top = "-80px"
     }
 
 }
 
 const Validate = {
-    apply(input, func){
+    apply(input, func) {
 
         let results = Validate[func](input.value)
+
         input.value = results.value
 
-        if(results.error){
+        if (results.error) {
             alert(results.error)
         }
 
     },
-    isEmail(value){ 
+    isEmail(value) {
 
         let error = null
-        const bailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
-        console.log(value)
-        console.log(value.match(mailFormat))
-
-        if(!value.match(mailFormat))
-            erro = 'Email inválido'
-
-        return{
+        if (!value.match(mailFormat)) {
+            error = 'Email inválido'
+        }
+        return {
             error,
             value
         }
