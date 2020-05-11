@@ -1,12 +1,7 @@
 <div class="item">
     <div>Nome Completo</div>
     <div class="input">
-        <input 
-            type="text" 
-            name="name" 
-            placeholder="Digite seu nome completo" 
-            value="{{ user.name }}"
-        >
+        <input type="text" name="name" placeholder="Digite seu nome completo" value="{{ user.name }}">
 
     </div>
 </div>
@@ -14,14 +9,7 @@
 <div class="item">
     <div>Email</div>
     <div class="input">
-        <input 
-            type="email" 
-            name="email" 
-            placeholder="Digite seu email" 
-            value="{{ user.email }}"
-            onblur="Validate.apply(this, 'isEmail')"
-            
-        >
+        <input type="email" name="email" placeholder="Digite seu email" value="{{ user.email }}" onblur="Validate.apply(this, 'isEmail')">
 
     </div>
 </div>
@@ -52,8 +40,9 @@
             type="text" 
             name="cpf_cnpj" 
             placeholder="Digite seu documento" 
-            value="{{ user.cpf_cnpj }}"
-            onkeydown="Mask.apply(this, 'cpfCnpj')"
+            value="{{ user.cpf_cnpj }}" 
+            onkeydown="Mask.apply(this, 'cpfCnpj')" 
+            onblur="Validate.apply(this, 'isCpfCnpj')"
         >
 
     </div>
@@ -66,8 +55,9 @@
             type="text" 
             name="cep" 
             placeholder="99999-999" 
-            value="{{ user.cep }}"
-                    onkeydown="Mask.apply(this, 'cep')"
+            value="{{ user.cep }}" 
+            onkeydown="Mask.apply(this, 'cep')" 
+            onblur="Validate.apply(this, 'isCep')"
         >
 
     </div>
