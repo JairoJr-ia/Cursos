@@ -205,3 +205,34 @@ const Lightbox = {
     }
 
 }
+
+const Validate = {
+    apply(input, func){
+
+        let results = Validate[func](input.value)
+        input.value = results.value
+
+        if(results.error){
+            alert(results.error)
+        }
+
+    },
+    isEmail(value){ 
+
+        let error = null
+        const bailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+        console.log(value)
+        console.log(value.match(mailFormat))
+
+        if(!value.match(mailFormat))
+            erro = 'Email inválido'
+
+        return{
+            error,
+            value
+        }
+    }
+
+}

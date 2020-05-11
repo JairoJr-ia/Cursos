@@ -19,6 +19,8 @@
             name="email" 
             placeholder="Digite seu email" 
             value="{{ user.email }}"
+            onblur="Validate.apply(this, 'isEmail')"
+            
         >
 
     </div>
