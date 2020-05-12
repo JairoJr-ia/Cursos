@@ -1,14 +1,14 @@
 const express = require('express')
 const routes = express.Router()
 
-//const SessionController = require('../app/controllers/SessionController')
+const SessionController = require('../app/controllers/SessionController')
 const UserController = require('../app/controllers/UserController')
 
 const Validator = require('../app/validators/user')
 
 //routes.get('/login', SessionController.loginForm)
 // routes.post('/login', SessionController.login)
-// routes.post('/logout', SessionController.logout)
+routes.post('/logout', SessionController.logout)
 
 // routes.get('/forgot-password', SessionController.forgotForm)
 // routes.get('/password-reset', SessionController.resetForm)
