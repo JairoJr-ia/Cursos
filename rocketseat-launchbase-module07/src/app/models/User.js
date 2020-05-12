@@ -60,5 +60,19 @@ module.exports = {
         
       }
     },
+    async update(id, fields){
+      let query = 'UPDATE users SET'
+
+      Object.keys(fields).map((key, index, array) => {
+        if((index + 1) < array.length){
+          query = `${query}`
+
+        } else {
+
+        }
+
+      })
+
+    },
 
 };

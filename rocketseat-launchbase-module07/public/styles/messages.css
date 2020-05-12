@@ -24,3 +24,8 @@
     background-color: #e74c3c;
 
 }
+
+.messages.success{
+    background-color: rgb(39, 206, 39);
+
+}
