@@ -66,5 +66,11 @@ module.exports = {
         value = value.replace(/(\d{5})(\d)/, '$1-$2')
 
         return value
+    },
+    formatPrice(price){
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(price/100)
     }
 }
